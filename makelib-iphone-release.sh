@@ -8,8 +8,6 @@
 
 function fetch() {
     echo "-- fetching webrtc"
-    gclient config http://webrtc.googlecode.com/svn/trunk/ || fail
-    echo "target_os = ['ios', 'mac']" >> .gclient
     gclient sync || fail
     echo "-- webrtc has been sucessfully fetched"
 }
@@ -49,8 +47,7 @@ function fail() {
 if [ ! -d trunk ]; then
     fetch || fail
     patch || fail
+    set_environment || fail
+    build || fail
 fi
-
-set_environment || fail
-build || fail
 
