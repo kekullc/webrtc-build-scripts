@@ -27,6 +27,11 @@ function patch() {
    sed -i "" '/.*assert identity not in cache or fingerprint.*/d' trunk/tools/gyp/pylib/gyp/xcode_emulation.py
    sed -i "" '/.*Multiple codesigning fingerprints for identity.*/d' trunk/tools/gyp/pylib/gyp/xcode_emulation.py
    sed -i "" '/.*framework IOKit.*/d' trunk/talk/libjingle.gyp 
+
+   sed -i "" 's/libssl/libssl_google/g' trunk/build/linux/system.gyp
+   sed -i "" 's/libssl/libssl_google/g' trunk/net/third_party/nss/ssl.gyp
+   sed -i "" 's/libssl/libssl_google/g' trunk/talk/build/common.gypi
+   sed -i "" 's/libssl/libssl_google/g' trunk/talk/libjingle.gyp
 }
 
 function build() {
